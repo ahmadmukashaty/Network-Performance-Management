@@ -1,4 +1,0 @@
-c:\Users\Ahmadmk\documents\visual studio 2017\Projects\Emailing\E-mailing\bin\Debug\E-mailing.dll
-c:\Users\Ahmadmk\documents\visual studio 2017\Projects\Emailing\E-mailing\bin\Debug\E-mailing.pdb
-c:\Users\Ahmadmk\documents\visual studio 2017\Projects\Emailing\E-mailing\obj\Debug\E-mailing.dll
-c:\Users\Ahmadmk\documents\visual studio 2017\Projects\Emailing\E-mailing\obj\Debug\E-mailing.pdb
