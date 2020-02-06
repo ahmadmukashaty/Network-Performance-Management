@@ -1,0 +1,31 @@
+<div *ngIf="success;else error" class="widthClass">
+  <h2 mat-dialog-title>SUCCESS</h2>
+  <hr>
+  <mat-dialog-content>
+      <label class="titleAction font">{{Message}}!</label><br>
+      <label>Please insert this process code to NPM desktop application to complete this action.</label><label class="titleAction">[{{file_name}}]</label><br>
+  </mat-dialog-content>
+  <div class="row">
+      <div class="col-xs-9"></div>
+      <div class="col-xs-3">
+        <button mat-button [mat-dialog-close]="true" class="btn btn-success universeName ridues" (click)="reload()" >OK</button>
+      </div>    
+  </div>
+</div>
+
+<ng-template #error>
+  <div class="widthClass">
+      <h2 mat-dialog-title>ERROR</h2>
+      <hr>
+      <mat-dialog-content>
+          <label class="titleError font">{{Message}}!</label><br>
+          <label *ngIf="!unactivateSubset">Please send an email to NPM team to fix it.</label>
+      </mat-dialog-content>        
+      <div class="row">
+          <div class="col-xs-9"></div>
+          <div class="col-xs-3">
+              <button mat-button [mat-dialog-close]="true" class="btn btn-danger universeName2 ridues">OK</button>
+          </div>    
+      </div>
+  </div>
+</ng-template>

@@ -1,0 +1,23 @@
+
+<div class="wrapper">
+    
+    <div *ngIf="flag;else logIn">
+        <div  class="sidebar" data-background-color="white" data-active-color="danger">
+            <sidebar-cmp></sidebar-cmp>
+        </div>
+        <div class="main-panel">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #logIn>
+        <div class="backgroundLogin">
+            <h2 style="padding-top:20px; text-align:center; margin:0px !important" class="titleProject">Network Performance Management</h2>
+            <router-outlet></router-outlet>
+        </div>
+    </ng-template>
+</div>
+<fixedplugin-cmp></fixedplugin-cmp>
+

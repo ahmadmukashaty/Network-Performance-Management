@@ -1,0 +1,47 @@
+<ngx-loading [show]="loading" [config]="{backdropBorderRadius: '50px',fullScreenBackdrop:true }"></ngx-loading>
+<div *ngIf="isLeaf;else setPath" class="counterInfoDialog">
+    <h2 mat-dialog-title>Deactivate counter</h2>
+    <hr>
+    <mat-dialog-content>
+        <h3>Counter :</h3>
+        <label>Name: </label>{{receivedNode.value}}<br>
+        <label>Table counter name: </label>{{receivedNode.tableCounterName}}<br>
+        <label>Counter Id: </label>{{receivedNode.counterID}}<br>
+        <label>Table name: </label>{{receivedNode.tableName}}<br>
+        <label>Value type: </label>{{receivedNode.valueType}}<br>
+        <label>Path: </label>{{receivedNode.path}}<br>
+        <h3>Related Subset :</h3>
+        <label>Subset Id: </label>{{receivedNode.Subset.SubsetID}}<br>
+        <label>Subset Name: </label>{{receivedNode.Subset.SubsetName}}<br>
+        <label>Universe: </label>{{receivedNode.Subset.Universe}}<br>
+        <label>Is subset Active: </label>{{receivedNode.Subset.IsActive}}<br>
+    </mat-dialog-content>
+    <div class="row">
+        <div class="col-xs-8"></div>
+        <div class="col-xs-4">
+            <button (click)="DeactivateCounter()" class="btn btn-success universeName ridues">Deactivate counter</button>
+        </div>    
+    </div>
+</div>
+
+<ng-template #setPath>
+    <div class="setPath">
+        <h2 mat-dialog-title>Add counters to this path</h2>
+        <hr>
+        <mat-dialog-content>
+            <label>Path: </label>{{receivedNode.path}}<br><br>
+            <div class="row">
+                    <div class="col-xs-8">
+                        <input type="text" [(ngModel)]="addPath" placeholder="add folders here to the path..."><br>
+                        <p style="color:darkred">To add new folders please put ('/') between folders names</p>
+                    </div>   
+                </div>
+            <div class="row">
+                <div class="col-xs-8"></div>
+                <div class="col-xs-4">
+                    <button mat-button [mat-dialog-close]="true" (click)="SetPath()" class="btn btn-success universeName ridues addFolders">Add Counters here</button>
+                </div>    
+            </div>
+        </mat-dialog-content>
+    </div>
+</ng-template>

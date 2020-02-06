@@ -1,0 +1,1 @@
+export var ApiUrl: string = 'http://seserv112/LOGIN/api';

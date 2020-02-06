@@ -1,0 +1,27 @@
+th{
+    font-weight: bold !important;
+}
+
+.successDB td:nth-child(6) {
+    color:green;
+    font-weight: bold;
+}
+.failDB td:nth-child(6) {
+    color:red;
+    font-weight: bold;
+}
+.successBO td:nth-child(7) {
+    color:green;
+    font-weight: bold;
+}
+.failBO td:nth-child(7) {
+    color:red;
+    font-weight: bold;
+}
+h4{
+    margin-bottom: 20px !important;
+}
+.content.table-responsive.table-full-width{
+    max-height: 1000px !important;
+    overflow: auto;
+}

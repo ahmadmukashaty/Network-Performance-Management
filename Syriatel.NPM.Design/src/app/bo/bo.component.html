@@ -1,0 +1,24 @@
+<div class="boData">
+        <div class="card">
+                <div class="content">
+                        <div class="row">
+                                <div class="col-xs-6 ">
+                                        <div class="icon-big icon-success text-left">
+                                                <i class="ti-server header-title"></i>
+                                                <span class="header-title">Universes</span>
+                                        </div>
+                                </div>
+                                <div class="col-xs-2" style="padding-top:10px;">
+                                        <button [routerLink]="['H6900']" routerLinkActive="active" class="btn btn-success universeName">H6900</button>
+                                </div>
+                                <div class="col-xs-2" style="padding-top:10px;">
+                                        <button [routerLink]="['NSS']" routerLinkActive="active" class="btn btn-success universeName">NSS</button>
+                                </div>
+                                <div class="col-xs-2" style="padding-top:10px;">
+                                        <button [routerLink]="['GSN']" routerLinkActive="active" class="btn btn-success universeName">GSN</button>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <router-outlet></router-outlet>
+</div>

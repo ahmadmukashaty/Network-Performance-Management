@@ -1,0 +1,39 @@
+<div class="actionsData">
+  <div class="col-xs-12">
+      <ngx-loading [show]="loading" [config]="{backdropBorderRadius: '50px',fullScreenBackdrop:true }"></ngx-loading>           
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="header">
+                      <h4 class="title"> Your Actions</h4>
+                      <select [(ngModel)]="searchText1">
+                          <option value="All">All</option>
+                          <option value="Add Subset">Add Subset</option>
+                          <option value="Add Counter">Add Counter</option>
+                          <option value="Add Dimention">Add Dimention</option>
+                          <option value="Change Counter Path">Change Counter Path</option>
+                          <option value="Deactivate Counter">Deactivate Counter</option>
+                      </select>
+                  </div>
+                  <div class="content table-responsive table-full-width">
+                      <table class="table table-striped">
+                          <thead>
+                              <tr>
+                                  <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr [ngClass]="{'successDB': row[5]=='successed','failDB': row[5]=='failed','successBO': row[6]=='successed','failBO': row[6]=='failed'}" *ngFor="let row of tableData1.dataRows | actionsFilter : searchText1">
+                                  <td *ngFor="let cell of row">{{cell}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- [ngClass]="{'successDB': row[5]=='successed','failDB': row[5]=='failed','successBO': row[6]=='successed','failBO': row[6]=='failed'}" -->

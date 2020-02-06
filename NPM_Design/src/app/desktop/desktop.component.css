@@ -1,0 +1,20 @@
+.title{
+    color: #7AC29A;
+}
+.desktop-info{
+    color: gray;
+    font-size: 20px;
+    padding: 10px 30px;
+}
+.desktop-link{
+    color: gray;
+    font-size: 16px;
+    padding: 10px 30px;
+}
+.imageDesktop{
+    text-align: right;
+    padding: 0px 40px;
+}
+h1{
+    padding: 0px 0px 40px 0px;
+}

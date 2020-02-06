@@ -1,0 +1,167 @@
+
+<div class="monitorData">
+        <ngx-loading [show]="loading" [config]="{backdropBorderRadius: '50px',fullScreenBackdrop:true }"></ngx-loading>
+    <br>
+    
+    <div class="monitorPage">
+    <div class="row">
+        <div class="col-xs-4">
+        <label> Date: </label> <input type="date" [(ngModel)]="dateFrom"/>
+        </div>
+        <div class="col-xs-8">
+        <div *ngIf="dateFrom">
+            <input class="btn btn-success universeName" type="button" value="H6900 Monitoring" (click)="H6900()"/>
+            <input class="btn btn-success universeName" type="button" value="GSN Loading" (click)="GSN()"/>
+            <input class="btn btn-success universeName" type="button" value="NSS Loading" (click)="NSS()"/>
+        </div>
+        
+            
+        
+        </div>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="load">
+
+    <div>
+    <div style="display: block;" >
+        <canvas baseChart 
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="card subset-card" *ngIf="monitor">
+    <div class="content">
+        <div class="row header-title">
+            <div class="col-xs-6 header-title-info">
+                <div class="row universesInfo">
+                    <div class="col-xs-4 title-name">
+                        <div class=" icon-success text-left">
+                            <i class="ti-arrow-top-left"></i>
+                            <span>Peaks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-5">         
+                <div class="icon-success text-right search-info">
+                    <div><span class="ti-search search-icon"></span></div>
+                    <input [(ngModel)]="peaksearchText" placeholder="Search here ..." class="searchInput">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <span class="icon-name ti-angle-double-down" (click)="togglePeak()" ></span>
+            </div>
+        </div>
+        <div class="row peak-content">
+            <div ng-if="peak"> 
+            <ul class="subsets">
+            <li *ngFor="let p of peak | peakfilter : peaksearchText" (click)="onSelectPeak(p)">     
+                <ng-container *ngIf="p.Success==='NO'; else elseTemplate">
+                    <label style="color:rgb(243, 78, 92);">{{p.PeakID}}</label>
+                    <img src="../syriatelnpm/assets/img/missing.PNG" style="margin-left:10px !important;" width="40" id="icon" alt="User Icon" />
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                    <label>{{p.PeakID}}</label>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="card subset-card" *ngIf="monitor">
+    <div class="content">
+        <div class="row header-title">
+            <div class="col-xs-6 header-title-info">
+                <div class="row universesInfo">
+                    <div class="col-xs-4 title-name">
+                        <div class=" icon-success text-left">
+                            <i class="ti-stats-up"></i>
+                            <span>KPIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-5">         
+                <div class="icon-success text-right search-info">
+                    <div><span class="ti-search search-icon"></span></div>
+                    <input [(ngModel)]="kpisearchText" placeholder="Search here ..." class="searchInput">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <span class="icon-name ti-angle-double-down" (click)="toggleKPI()" ></span>
+            </div>
+        </div>
+        <div class="row kpi-content">
+            <div ng-if="kpi">
+            <ul class="subsets">
+                <li *ngFor="let k of kpi | kpipipe : kpisearchText" (click)="onSelectKpi(k)">
+                <ng-container *ngIf="k.Success==='NO'; else elseTemplate">
+                <label style="color:rgb(243, 78, 92);">{{k.KpiID}}</label>
+                <img src="../syriatelnpm/assets/img/missing.PNG" style="margin-left:10px !important;" width="40" id="icon" alt="User Icon" />
+                </ng-container>
+                <ng-template #elseTemplate>
+                <label>{{k.KpiID}}</label>      
+                </ng-template>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="card subset-card" *ngIf="monitor">
+    <div class="content">
+        <div class="row header-title">
+            <div class="col-xs-6 header-title-info">
+                <div class="row universesInfo">
+                    <div class="col-xs-4 title-name">
+                        <div class=" icon-success text-left">
+                            <i class="ti-time"></i>
+                            <span>Daily</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-5">         
+                <div class="icon-success text-right search-info">
+                    <div><span class="ti-search search-icon"></span></div>
+                    <input [(ngModel)]="dailysearchText" placeholder="Search here ..." class="searchInput">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <span class="icon-name ti-angle-double-down" (click)="toggleDaily()" ></span>
+            </div>
+        </div>
+        <div class="row daily-content">
+            <div ng-if="daily">
+                <ul class="subsets">
+                <li *ngFor="let d of daily | dailypipe : dailysearchText" (click)="onSelectDaily(d)">            
+                    <ng-container *ngIf="d.Success==='NO'; else elseTemplate">
+                        <label style="color:rgb(243, 78, 92);">{{d.SubsetID}}</label>
+                        <!--<img src="../syriatelnpm/assets/img/loginLogo.jpg" width="300" id="icon" alt="User Icon" />-->
+                        <img src="../syriatelnpm/assets/img/missing.PNG" style="margin-left:10px !important;" width="40" id="icon" alt="User Icon" />
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <label>{{d.SubsetID}}</label>
+                        </ng-template>            
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
